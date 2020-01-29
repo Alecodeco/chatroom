@@ -1,4 +1,6 @@
 class Message < ActiveRecord::Base
-  belongs_to :user_id
-  validates :body, presence: true
+  belongs_to :user
+
+  validates :body, presence: true, length: {minimum: 3, maximum: 300}
+  validates :user_id, presence: true
 end
