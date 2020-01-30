@@ -8,13 +8,19 @@
       <div class="ui dropdown item">
         Account <i class="dropdown icon"></i>
         <div class="menu">
-          <a class="item">Log out</a>
-          <%= link_to "Log in", login_path, class: "item" %>
+          <% if logged_in? %>
+            <a class="item">Settings</a>
+          <% end %>
         </div>
       </div>
+      <% if !logged_in? && !current_page?(login_path)%>
       <div class="item">
-        <div class="ui primary button">Sign Up</div>
+        <%= link_to "Log in", login_path, class: "ui primary button" %>
       </div>
+      <div class="item">
+        <%= link_to "Signup", login_path, class: "ui orange button" %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
