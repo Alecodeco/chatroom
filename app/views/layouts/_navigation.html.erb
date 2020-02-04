@@ -7,12 +7,15 @@
     <div class="right menu">
       <% if logged_in? %>
       <div class="ui dropdown item">
-        <%= link_to "#{current_user.username}'s account", class:"item" %>
+        <%= link_to "Account", class:"item" %>
         <i class="dropdown icon"></i>
         <div class="menu">
             <a class="item">Settings</a>
             <%= link_to "Logout", logout_path, method: :delete, class:"item" %>
         </div>
+      </div>
+      <div class="item">
+        <%= "#{current_user.username}" %>
       </div>
       <% elsif !logged_in? and !current_page?(login_path)%>
       <div class="item">

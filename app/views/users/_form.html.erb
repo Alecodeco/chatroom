@@ -1,14 +1,14 @@
 <div class="ui form">
   <%= form_for @user do |f| %>
-    <div class="field">
+    <div class="required field">
       <%= f.label :username %>
       <%= f.text_field :username, placeholder:'Enter username', autofocus:"true" %>
     </div>
-    <div class="field">
+    <div class="required field">
       <%= f.label :password %>
       <%= f.password_field :password, placeholder:"Enter password" %>
     </div>
-    <div class="field">
+    <div class="required field">
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, placeholder:"Re-enter password" %>
     </div>
