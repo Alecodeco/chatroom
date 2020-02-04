@@ -5,18 +5,20 @@
       Messages
     </a>
     <div class="right menu">
+      <% if logged_in? %>
       <div class="ui dropdown item">
-        Account <i class="dropdown icon"></i>
+        <%= link_to "#{current_user.username}'s account", class:"item" %>
+        <i class="dropdown icon"></i>
         <div class="menu">
-          <% if logged_in? %>
             <a class="item">Settings</a>
-          <% end %>
+            <%= link_to "Logout", logout_path, method: :delete, class:"item" %>
         </div>
       </div>
-      <% if !logged_in? && !current_page?(login_path)%>
+      <% elsif !logged_in? and !current_page?(login_path)%>
       <div class="item">
         <%= link_to "Log in", login_path, class: "ui primary button" %>
       </div>
+      <% elsif !logged_in? and (!current_page?(login_path) and !current_page?(signup_path) ) %>
       <div class="item">
         <%= link_to "Signup", login_path, class: "ui orange button" %>
       </div>

@@ -4,16 +4,22 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 # My gems
 gem 'semantic-ui-sass'
-gem 'jquery-rails'
 gem 'hirb'
-#
-#
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails_12factor'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'will_paginate', '~> 3.1.0'
+gem 'rails-controller-testing'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
+gem 'sassc', '~> 2.2', '>= 2.2.1'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+#
+#
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma'
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -28,8 +34,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -40,6 +44,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -47,15 +52,15 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'sqlite3'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+end
+
+group :production do
   gem 'pg'
 end
 

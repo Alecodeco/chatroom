@@ -1,24 +1,20 @@
-<form class="ui form">
+<div class="ui form">
   <%= form_for @user do |f| %>
-    <div class="required field">
+    <div class="field">
       <%= f.label :username %>
       <%= f.text_field :username, placeholder:'Enter username', autofocus:"true" %>
     </div>
-    <div class="required field">
+    <div class="field">
       <%= f.label :password %>
       <%= f.password_field :password, placeholder:"Enter password" %>
     </div>
-    <div class="required field">
-      <%= f.password_field :password, placeholder:"Re-enter password" %>
-    </div>
-    <div class="required field">
-      <div class="ui checkbox">
-        <input type="checkbox" id="checkTaC" tabindex="0" class="hidden">
-        <label>I agree to the Terms and Conditions</label>
-      </div>
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, placeholder:"Re-enter password" %>
     </div>
     <br>
-    <%= f.submit "Submit", class:"ui orange button" %>
-    <%= link_to "Cancel and return", signup_path %>
+    <%= f.submit "Signup", class:"ui orange button" %>
   <% end %>
-</form>
+  <br>
+  <%= link_to "Cancel and return", login_path %>
+</div>
