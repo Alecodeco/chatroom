@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :current_controller, :logged_in?
+  helper_method :current_user, :current_controller, :logged_in?, :require_user
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -17,14 +17,14 @@ class ApplicationController < ActionController::Base
 
   def require_user
     if !logged_in?
-      flash[:danger] = "You must be logged in."
+      flash[:red] = "You must be logged in."
       redirect_to login_path
     end
   end
 
   def require_same_user
     if current_user != @user
-      flash[:danger] = "Must be logged in for that."
+      flash[:red] = "Must be logged in for that."
       redirect_to root_path
     end
   end

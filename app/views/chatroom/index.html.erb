@@ -19,15 +19,17 @@
 
   <div class="ui ten wide column ">
     <div class="ui fluid raised card">
-      <div class="ui large fluid feed">
+      <div class="ui large feed">
         <%= render @messages %>
       </div>
-      <div class="extra content">
-        <div class="ui fluid action input">
-          <input type="text" placeholder="Your message here...">
-          <button class="ui orange button">Send</button>
-        </div>
-      </div>
+          <div class="extra content">
+            <%= form_for @message, method:"create", url:message_path do |f| %>
+            <div class="ui small fluid action input">
+              <%= f.text_field :body, placeholder:"Your message here..." %>
+              <%= f.submit "Send", class:"ui orange right labeled icon tiny button" %>              
+              <% end %>
+            </div>
+          </div>
     </div>
   </div>
 
