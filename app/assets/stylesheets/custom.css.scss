@@ -3,3 +3,7 @@
 .main-content {
   padding: 0px 10px 0px 10px;
 }
+#message-container {
+  max-height: 250px;
+  overflow: auto;  
+}

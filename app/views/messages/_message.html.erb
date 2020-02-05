@@ -4,12 +4,10 @@
   </div>
   <div class="content">
     <div class="summary">
-      <p><%= User.find(message.user_id).username %></p>
+      <p><%= message.user.username %></p>
     </div>
     <div class="extra text">
       <%= message.body %>
     </div>
-
   </div>
-
 </div>
