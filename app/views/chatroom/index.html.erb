@@ -25,7 +25,7 @@
           <div class="extra content">
             <%= form_for @message, method:"create", url:message_path, remote:true do |f| %>
             <div class="ui small fluid action input">
-              <%= f.text_field :body, placeholder:"Your message here..." %>
+              <%= f.text_field :body, placeholder:"Enter message here..." %>
               <%= f.submit "Send", class:"ui orange right labeled icon tiny button" %>
               <% end %>
             </div>
