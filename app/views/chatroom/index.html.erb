@@ -9,9 +9,17 @@
     <div class="ui fluid raised card">
       <div class="content">
         <div class="ui inverted fluid vertical menu">
-          <a class="orange item">Home</a>
-          <a class="orange item">Messages</a>
-          <a class="orange item">Friends</a>
+
+          <div class="ui left pointing dropdown link item">
+            <i class="dropdown icon"></i>Status
+            <div class="menu">
+              <%= "Online", class: "item", set_status("Online") %>
+              <div class="item">Online</div>
+              <div class="item">Busy</div>
+              <div class="item">Away</div>
+            </div>
+          </div>
+          <a class="orange item">History</a>
         </div>
       </div>
     </div>
@@ -37,8 +45,9 @@
     <div class="ui fluid raised card">
       <div class="content">
         <div class="ui small feed">
-          <h4 class="ui header">Participants</h4>
+          <h4 class="ui header">Participants:</h4>
           <% @user.each do |user| %>
+          <% if user != current_user %>
           <div class="event">
             <div class="content">
               <div class="summary">
@@ -46,6 +55,7 @@
               </div>
             </div>
           </div>
+          <% end %>
           <% end %>
         </div>
       </div>

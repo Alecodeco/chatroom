@@ -17,6 +17,9 @@
       <div class="item">
         <%= "#{current_user.username}" %>
       </div>
+      <div class="item">
+        <%= "#{current_user.status}" %>
+      </div>
       <% elsif !logged_in? and !current_page?(login_path)%>
       <div class="item">
         <%= link_to "Log in", login_path, class: "ui primary button" %>

@@ -11,6 +11,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'rails-controller-testing'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 gem 'sassc', '~> 2.2', '>= 2.2.1'
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 #
 #
