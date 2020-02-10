@@ -5,6 +5,9 @@
       Messages
     </a>
     <div class="right menu">
+      <div class="active orange item">
+        <strong><%= "#{current_user.username}" %></strong>
+      </div>
       <% if logged_in? %>
       <div class="ui dropdown item">
         <%= link_to "Account", class:"item" %>
@@ -15,10 +18,12 @@
         </div>
       </div>
       <div class="item">
-        <%= "#{current_user.username}" %>
-      </div>
-      <div class="item">
         <%= "#{current_user.status}" %>
+        <% if current_user.status != "Online" %>
+        <i class="toggle off icon" id="status-icon"></i>
+        <% else %>
+        <i class="toggle on icon" id="status-icon"></i>
+        <% end %>
       </div>
       <% elsif !logged_in? and !current_page?(login_path)%>
       <div class="item">

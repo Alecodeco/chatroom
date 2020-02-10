@@ -9,12 +9,12 @@
     <div class="ui fluid raised card">
       <div class="content">
         <div class="ui inverted fluid vertical menu">
-
           <div class="ui left pointing dropdown link item">
             <i class="dropdown icon"></i>Status
             <div class="menu">
-              <%= "Online", class: "item", set_status("Online") %>
-              <div class="item">Online</div>
+              <div class="header">
+                <%= "#{current_user.status}" %>
+              </div>
               <div class="item">Busy</div>
               <div class="item">Away</div>
             </div>
@@ -51,7 +51,7 @@
           <div class="event">
             <div class="content">
               <div class="summary">
-                <%= link_to "#{user.username}", user_path(user.id)  %>
+                <%= link_to "#{user.username} (#{user.status})", user_path(user.id)  %>
               </div>
             </div>
           </div>
