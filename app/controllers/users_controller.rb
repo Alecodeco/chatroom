@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       @user.status = "Online"
-      flash[:success] = "Account successfully created. Welcome #{@user.username}!"
+      flash[:success] = "Account successfully created. Welcome '#{@user.username}'!"
       redirect_to root_path
     else
       render 'new'
@@ -27,7 +27,8 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def update
+  def update    
+    redirect_to root_path
   end
 
   private

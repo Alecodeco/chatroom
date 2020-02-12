@@ -6,7 +6,7 @@
     </a>
     <div class="right menu">
       <div class="active orange item">
-        <strong><%= "#{current_user.username}" %></strong>
+        <strong><%= "#{current_user.username if logged_in?}" %></strong>
       </div>
       <% if logged_in? %>
       <div class="ui dropdown item">
