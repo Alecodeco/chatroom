@@ -5,7 +5,6 @@ ruby '2.6.5'
 # My gems
 gem 'semantic-ui-sass'
 gem 'hirb'
-gem 'rails_12factor'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'will_paginate', '~> 3.1.0'
 gem 'rails-controller-testing'
@@ -41,6 +40,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -63,9 +66,6 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-group :production do
-  gem 'pg'
-end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
