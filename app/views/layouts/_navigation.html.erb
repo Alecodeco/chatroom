@@ -1,28 +1,25 @@
 <div class="ui small inverted menu">
   <div class="ui container">
     <%= link_to "Chatroom", root_path, class: "item" %>
-    <a class="item">
-      Messages
-    </a>
     <div class="right menu">
-      <div class="active orange item">
-        <strong><%= "#{current_user.username if logged_in?}" %></strong>
-      </div>
       <% if logged_in? %>
+      <div class="active orange item">
+        <strong><%= "#{current_user.username}" %></strong>
+      </div>
       <div class="ui dropdown item">
         <%= link_to "Account", class:"item" %>
         <i class="dropdown icon"></i>
         <div class="menu">
-            <a class="item">Settings</a>
+            <%= link_to "Profile", user_path(current_user.id), class:"item" %>            
             <%= link_to "Logout", logout_path, method: :delete, class:"item" %>
         </div>
       </div>
       <div class="item">
         <%= "#{current_user.status}" %>
         <% if current_user.status != "Online" %>
-        <i class="toggle off icon" id="status-icon"></i>
+        <i class="toggle off icon" id="nav-status-icon"></i>
         <% else %>
-        <i class="toggle on icon" id="status-icon"></i>
+        <i class="toggle on icon" id="nav-status-icon"></i>
         <% end %>
       </div>
       <% elsif !logged_in? and !current_page?(login_path)%>
