@@ -9,6 +9,10 @@ class MessagesController < ApplicationController
     end
   end
 
+  def index
+    @messages = Message.custom_history
+  end
+
   private
   def message_params
     params.require(:message).permit(:body)
@@ -17,7 +21,6 @@ class MessagesController < ApplicationController
   def message_render(message)
     render(partial:'message', locals:{message: message})
   end
-
 
 
 end

@@ -5,5 +5,6 @@ class Message < ActiveRecord::Base
   validates :user_id, presence: true
 
   scope :custom_display, ->{ order(:created_at).last(25) }
+  scope :custom_history, ->{ order(:created_at).last(250)}
 
 end

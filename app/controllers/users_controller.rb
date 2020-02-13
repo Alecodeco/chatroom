@@ -1,11 +1,17 @@
 class UsersController < ApplicationController
 
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :require_same_user, only: [:edit, :update]
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
   def index
     @user = User.all
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
@@ -27,13 +33,26 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def update    
-    redirect_to root_path
+  def update
+    if @user.update(user_params)
+      flash[:green] = "Changes saved successfully"
+      redirect_to user_path
+    else
+      render 'edit'
+    end
   end
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :status)
+    params.require(:user).permit(:username, :password, :password_confirmation,:description, :status)
+  end
+
+
+  def require_same_user
+    if logged_in? && current_user != @user
+      flash[:danger] = "You can only edit your own account"
+      redirect_to root_path
+    end
   end
 
 

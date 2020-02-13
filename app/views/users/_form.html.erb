@@ -4,17 +4,25 @@
       <%= f.label :username %>
       <%= f.text_field :username, placeholder:'Enter username', autofocus:"true" %>
     </div>
+    <% if !@user.new_record? %>
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description, placeholder: "Tell us about yourself !" %>
+    </div>
+    <% end %>
     <div class="required field">
       <%= f.label :password %>
-      <%= f.password_field :password, placeholder:"Enter password" %>
+      <%= f.password_field :password, placeholder:"Enter password"%>
     </div>
+    <% if @user.new_record? %>
     <div class="required field">
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, placeholder:"Re-enter password" %>
     </div>
+    <% end %>
     <br>
-    <%= f.submit "Signup", class:"ui orange button" %>
+    <%= f.submit(@user.new_record? ? "Signup" : "Save changes", class:"ui orange button") %>
   <% end %>
   <br>
-  <%= link_to "Cancel and return", login_path %>
+  <%= link_to "Cancel and return", @user.new_record? ? login_path : user_path(@user) %>
 </div>
