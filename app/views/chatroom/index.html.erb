@@ -10,17 +10,15 @@
       <div class="content">
         <div class="ui inverted fluid vertical menu">
           <div class="ui left pointing dropdown link item">
-            <i class="dropdown icon"></i>Status
+            <i class="dropdown icon"></i>
+            Status
             <div class="menu">
-              <div class="header">
-                <%= "> #{current_user.status}" %>
-              </div>
-
-
-
+              <div class="item">Away</div>
+              <div class="item">Busy</div>
+              <div class="item">Online</div>
             </div>
           </div>
-          <%= link_to "History", history_path, class:"orange item" %>          
+          <%= link_to "History", history_path, class:"orange item" %>
         </div>
       </div>
     </div>

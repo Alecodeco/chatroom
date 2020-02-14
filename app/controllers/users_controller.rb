@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :update_status]
   before_action :require_same_user, only: [:edit, :update]
 
   def set_user
@@ -42,11 +42,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_status(status)
+    if current_user.update_attribute(:status, status)
+      flash[:green] = "Status changed"
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation,:description, :status)
   end
-
 
   def require_same_user
     if logged_in? && current_user != @user
