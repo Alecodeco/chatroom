@@ -11,7 +11,8 @@ gem 'rails-controller-testing'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 gem 'sassc', '~> 2.2', '>= 2.2.1'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk', '~> 3'
+gem 'aws-sdk-s3'
 #
 #
 # Use sqlite3 as the database for Active Record
