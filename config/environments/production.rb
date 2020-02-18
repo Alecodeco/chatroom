@@ -7,6 +7,11 @@ Rails.application.configure do
   # Use master key credentials
   config.require_master_key = true
 
+  # Websocket for action cable
+  config.web_socket_server_url = "wss://message-me-now.herokuapp.com/"
+  config.action_cable.allowed_request_origins = ['https://message-me-now.herokuapp.com/', 'http://message-me-now.herokuapp.com/']
+
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.

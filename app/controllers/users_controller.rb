@@ -1,7 +1,25 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :update_status]
+  before_action :set_user, only: [:show, :edit, :update]
   before_action :require_same_user, only: [:edit, :update]
+
+  def set_busy
+    if current_user.update_attribute(:status, "Busy")
+      flash[:red] = "Status changed : 'Busy' "
+    end
+  end
+
+  def set_away
+    if current_user.update_attribute(:status, "Away")
+      flash[:yellow] = "Status changed : 'Away' "
+    end
+  end
+
+  def set_online
+    if current_user.update_attribute(:status, "Online")
+      flash[:green] = "Status changed : 'Online' "
+    end
+  end
 
   def set_user
     @user = User.find(params[:id])
@@ -42,11 +60,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def update_status(status)
-    if current_user.update_attribute(:status, status)
-      flash[:green] = "Status changed"
-    end
-  end
 
   private
   def user_params
