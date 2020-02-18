@@ -998,7 +998,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.8-x86-mingw32)
       mini_portile2 (~> 2.4.0)
-    pg (1.2.2-x86-mingw32)
+    pg (0.21.0-x86-mingw32)
     public_suffix (4.0.3)
     puma (4.3.1)
       nio4r (~> 2.0)
@@ -1111,7 +1111,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.1)
   listen
-  pg
+  pg (~> 0.11)
   puma
   rails (~> 5.2.4, >= 5.2.4.1)
   rails-controller-testing
