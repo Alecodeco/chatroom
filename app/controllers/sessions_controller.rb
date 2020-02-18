@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :set_offline, only: [:destroy]
 
   def new
   end
@@ -20,6 +21,11 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     flash[:green] = "Logged out."
     redirect_to login_path
+  end
+
+  private
+  def set_offline
+    current_user.update_attribute(:status, "Offline")
   end
 
 end
