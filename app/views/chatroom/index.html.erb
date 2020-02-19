@@ -13,7 +13,7 @@
             <i class="dropdown icon"></i>
             Status
             <div class="menu">
-              
+
             </div>
           </div>
           <%= link_to "History", history_path, class:"orange item" %>
@@ -27,14 +27,14 @@
       <div class="ui large feed" id="message-container">
         <%= render @messages %>
       </div>
-          <div class="extra content">
-            <%= form_for @message, method:"create", url:message_path, remote:true do |f| %>
-            <div class="ui small fluid action input">
-              <%= f.text_field :body, placeholder:"Enter message here..." %>
-              <%= f.submit "Send", class:"ui orange right labeled icon tiny button" %>
-              <% end %>
-            </div>
-          </div>
+      <div class="extra content">
+        <%= form_with model: @message, method:"create", url:message_path, id:"chat_form" do |f| %>
+        <div class="ui small fluid action input">
+          <%= f.text_field :body, autofocus: true, autocomplete: false, placeholder:"Enter message here...", id:"chat_textfield" %>
+          <%= f.submit "Send", class:"ui orange right labeled icon tiny button", id:"send_button" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 
