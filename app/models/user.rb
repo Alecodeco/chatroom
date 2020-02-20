@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
             uniqueness: {case_sensitiveness: false},
             length: {minimum:3, maximum: 25}
 
-  validates :description, length: {minimum:1, maximum:90}
+  validates :description, length: { maximum:90}
 
 
 end

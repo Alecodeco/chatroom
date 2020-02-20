@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      @user.status = "Online"
+      @user.update_attribute(:status, "Online")
       flash[:success] = "Account successfully created. Welcome '#{@user.username}'!"
       redirect_to root_path
     else
