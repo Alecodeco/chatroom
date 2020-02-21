@@ -10,10 +10,19 @@
       <div class="content">
         <div class="ui inverted fluid vertical menu">
           <div class="ui left pointing dropdown link item">
-            <i class="dropdown icon"></i>
             Status
-            <div class="menu">
-
+            <i class="dropdown icon"></i>
+            <div class="menu" id="status-sub-menu">
+              <% @status_list.each do |status, color| %>
+              <a class="item">
+                <%= form_for current_user, method: :patch, remote: true do |f| %>
+                  <% f.text_field :status, :value => status %>
+                  <% is_active = "active" if current_user.status == status %>
+                  <%= f.submit status, class:"ui inverted #{color} fluid #{is_active} tiny button" %>
+                <% end %>
+              </a>
+              <%= button_to "BHsadas", {:controller => "users", :action => "set_busy"} %>
+              <% end %>
             </div>
           </div>
           <%= link_to "History", history_path, class:"orange item" %>
@@ -50,7 +59,7 @@
               </div>
             </div>
           </div>
-          <% @user.each do |user| %>
+          <% @users.each do |user| %>
           <% if user.status != "Offline" %>
           <div class="event">
             <div class="content">

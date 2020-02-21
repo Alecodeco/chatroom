@@ -3,24 +3,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :require_same_user, only: [:edit, :update]
 
-  def set_busy
-    if current_user.update_attribute(:status, "Busy")
-      flash[:red] = "Status changed : 'Busy' "
-    end
-  end
-
-  def set_away
-    if current_user.update_attribute(:status, "Away")
-      flash[:yellow] = "Status changed : 'Away' "
-    end
-  end
-
-  def set_online
-    if current_user.update_attribute(:status, "Online")
-      flash[:green] = "Status changed : 'Online' "
-    end
-  end
-
   def set_user
     @user = User.find(params[:id])
   end
@@ -34,6 +16,10 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+  end
+
+  def set_busy
+    @user.update_attribute(:status, "Busy")
   end
 
   def create
@@ -63,7 +49,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation,:description, :status)
+     params.require(:user).permit(:username, :password, :password_confirmation,:description, :status)
   end
 
   def require_same_user
