@@ -6,7 +6,7 @@ class ChatroomController < ApplicationController
     @status_list = [["Online","green"], ["Busy","red"], ["Away","yellow"]]
     @messages = Message.custom_display
     @message = Message.new
-    @users = User.all
+    @users = User.all    
   end
 
 

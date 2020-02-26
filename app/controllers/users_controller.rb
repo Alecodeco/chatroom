@@ -18,10 +18,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def set_busy
-    @user.update_attribute(:status, "Busy")
-  end
-
   def create
     @user = User.new(user_params)
     if @user.save
@@ -49,7 +45,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-     params.require(:user).permit(:username, :password, :password_confirmation,:description, :status)
+     params.require(:user).permit(:username, :password, :password_confirmation, :description, :status)
   end
 
   def require_same_user

@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
-  post 'users/set_busy' => 'users#set_busy'
 
   post 'message', to: 'messages#create'
   get 'history', to: 'messages#index'
