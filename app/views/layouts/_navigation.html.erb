@@ -10,12 +10,12 @@
         <%= link_to "Account", class:"item" %>
         <i class="dropdown icon"></i>
         <div class="menu">
-            <%= link_to "Profile", user_path(current_user.id), class:"item" %>            
+            <%= link_to "Profile", user_path(current_user.id), class:"item" %>
             <%= link_to "Logout", logout_path, method: :delete, class:"item" %>
         </div>
       </div>
       <div class="item">
-        <%= "#{current_user.status}" %>
+        <span id="current-status-nav"><%= "#{current_user.status}" %></span>
         <% if current_user.status != "Online" %>
         <i class="toggle off icon" id="nav-status-icon"></i>
         <% else %>

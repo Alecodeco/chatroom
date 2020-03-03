@@ -8,7 +8,21 @@
   <div class="ui three wide column">
     <div class="ui fluid raised card">
       <div class="content">
-        <div class="ui inverted fluid vertical menu">          
+        <div class="ui inverted fluid vertical menu">
+          <div class="ui left pointing dropdown link item">
+            <i class="dropdown icon"></i>
+            Status
+            <div class="menu">
+            <% @status_list.each do |status, btn_color| %>
+              <div class="item">
+              <%= form_tag change_status_path, method: :get, remote: true do %>
+                <%= hidden_field_tag :status, status %>
+                <%= button_tag status, type: :submit, class:"ui fluid #{btn_color} button" %>
+              <% end %>
+              </div>
+            <% end %>
+            </div>
+          </div>
           <%= link_to "History", history_path, class:"orange item" %>
         </div>
       </div>
@@ -47,7 +61,7 @@
           <% if user.status != "Offline" %>
           <div class="event">
             <div class="content">
-              <div class="summary">
+              <div class="summary" id="user_status_nav">
                 <%= link_to "#{user.username} (#{user.status})", user_path(user.id) if user != current_user %>
               </div>
             </div>

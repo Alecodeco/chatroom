@@ -42,6 +42,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_status
+    respond_to do |format|
+      current_user.update_attribute(:status, params[:status])
+      format.js { render js: 'window.location.href = "/";' }      
+    end
+
+  end
+
 
   private
   def user_params

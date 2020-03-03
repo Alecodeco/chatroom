@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   get 'signup', to: 'users#new'
+  get 'change_status', to: 'users#change_status'
   resources :users, except: [:new]
 
   post 'message', to: 'messages#create'
