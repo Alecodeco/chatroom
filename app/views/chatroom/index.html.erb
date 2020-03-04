@@ -61,7 +61,7 @@
           <% if user.status != "Offline" %>
           <div class="event">
             <div class="content">
-              <div class="summary" id="user_status_nav">
+              <div class="summary">
                 <%= link_to "#{user.username} (#{user.status})", user_path(user.id) if user != current_user %>
               </div>
             </div>
