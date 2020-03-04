@@ -62,7 +62,7 @@
           <div class="event">
             <div class="content">
               <div class="summary">
-                <%= link_to "#{user.username} (#{user.status})", user_path(user.id) if user != current_user %>
+                <%= link_to "#{user.username}", user_path(user.id) if user != current_user %>
               </div>
             </div>
           </div>
