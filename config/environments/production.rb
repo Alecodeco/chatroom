@@ -4,9 +4,6 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  # Use master key credentials
-  config.require_master_key = true
-
   # Websocket for action cable
   config.web_socket_server_url = "wss://message-me-now.herokuapp.com/"
   config.action_cable.allowed_request_origins = ['https://message-me-now.herokuapp.com/', 'http://message-me-now.herokuapp.com/']
@@ -24,7 +21,7 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
