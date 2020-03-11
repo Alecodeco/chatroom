@@ -4,7 +4,7 @@ class Message < ActiveRecord::Base
   validates :body, presence: true, length: {minimum: 1, maximum: 100}
   validates :user_id, presence: true
 
-  scope :custom_display, ->{ order(:created_at).last(25) }
-  scope :custom_history, ->{ order(:created_at).last(250)}
+  scope :custom_display, ->{ order(:created_at).last(150) }
+  scope :custom_history, ->{ order(:created_at)}
 
 end

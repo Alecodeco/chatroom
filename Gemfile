@@ -13,6 +13,7 @@ gem 'sassc', '~> 2.2', '>= 2.2.1'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'aws-sdk', '~> 3'
 gem 'aws-sdk-s3'
+gem 'markdown-rails'
 #
 #
 # Use sqlite3 as the database for Active Record
