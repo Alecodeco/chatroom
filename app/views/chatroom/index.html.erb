@@ -5,29 +5,7 @@
 
 <div class="ui stackable centered grid">
 
-  <div class="ui three wide column">
-    <div class="ui fluid raised card">
-      <div class="content">
-        <div class="ui inverted fluid vertical menu">
-          <div class="ui left pointing dropdown link item">
-            <i class="dropdown icon"></i>
-            Status
-            <div class="menu">
-            <% @status_list.each do |status, btn_color| %>
-              <div class="item">
-              <%= form_tag change_status_path, method: :get, remote: true do %>
-                <%= hidden_field_tag :status, status %>
-                <%= button_tag status, type: :submit, class:"ui fluid #{btn_color} button" %>
-              <% end %>
-              </div>
-            <% end %>
-            </div>
-          </div>
-          <%= link_to "History", history_path, class:"orange item" %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'chatroom/left_button_menu' %>
 
   <div class="ui ten wide column ">
     <div class="ui fluid raised card">
@@ -37,7 +15,8 @@
       <div class="extra content">
         <%= form_with model: @message, method:"create", url:message_path, id:"chat_form" do |f| %>
         <div class="ui small fluid action input">
-          <%= f.text_field :body, autofocus: true, autocomplete: false, placeholder:"Enter message here...", id:"chat_textfield" %>
+          <%= f.text_field :body, autofocus: true, autocomplete: false,
+                            placeholder:"Enter message here...", id:"chat_textfield" %>
           <%= f.submit "Send", class:"ui orange right labeled icon tiny button", id:"send_button" %>
           <% end %>
         </div>
@@ -45,32 +24,6 @@
     </div>
   </div>
 
-  <div class="three wide column">
-    <div class="ui fluid raised card">
-      <div class="content">
-        <div class="ui small feed">
-          <h4 class="ui header">Participants:</h4>
-          <div class="event">
-            <div class="content">
-              <div class="summary">
-                <%= link_to "( You )", user_path(current_user.id) %>
-              </div>
-            </div>
-          </div>
-          <% @users.each do |user| %>
-          <% if user.status != "Offline" %>
-          <div class="event">
-            <div class="content">
-              <div class="summary">
-                <%= link_to "#{user.username}", user_path(user.id) if user != current_user %>
-              </div>
-            </div>
-          </div>
-          <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'chatroom/right_menu_participants' %>
 
 </div>

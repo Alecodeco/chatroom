@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
   before_action :require_user
+  before_action :require_superuser, only: [:cleanup]
 
   def create
     message = current_user.messages.build(message_params)
@@ -20,6 +21,13 @@ class MessagesController < ApplicationController
 
   def message_render(message)
     render(partial:'message', locals:{message: message})
+  end
+
+  def cleanup
+    @messages = Messages.all
+    @messages.destroy
+    flash[:warning] = "Cleaning done! All messages were deleted."
+    redirect_to root_path
   end
 
 

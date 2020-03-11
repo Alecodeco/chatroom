@@ -1,16 +1,21 @@
 <div class="ui small inverted menu">
   <div class="ui container">
     <div class="left menu">
-      <%= link_to "Chatroom", root_path, class:"item" %>
-      <%= link_to "About", about_path, class:"item" %>
+      <%= link_to "Chatroom", root_path, class:"item #{'active' if current_page?(root_path)}" %>
+      <%= link_to "About", about_path, class:"item #{'active' if current_page?(about_path)}" %>
     </div>
+    <!-- -->
+    <div class="item">
+      <p>Cleanse countdown:</p>
+    </div>
+    <!-- -->
     <div class="right menu">
       <% if logged_in? %>
       <div class="item">
         <i class="user <%= "orange" if logged_in? %> icon"></i>
         <strong><%= "#{current_user.username}" %></strong>
       </div>
-      <div class="item" id="current-status-nav">
+      <div class="item">
         <% label_color = "" %>
         <% label_color = "green" if current_user.status == "Online" %>
         <% label_color = "red" if current_user.status == "Busy" %>
@@ -23,8 +28,12 @@
         <%= link_to "Account", class:"item" %>
         <i class="dropdown icon"></i>
         <div class="menu">
-          <%= link_to "Profile", user_path(current_user.id), class:"item" %>
-          <%= link_to "Logout", logout_path, method: :delete, class:"item" %>
+          <div class="item">
+            <%= link_to "Profile", user_path(current_user.id), class:"ui inverted primary fluid button" %>
+          </div>
+          <div class="item">
+            <%= link_to "Logout", logout_path, method: :delete, class:"ui inverted red fluid button" %>
+          </div>
         </div>
       </div>
       <% elsif !logged_in? and !current_page?(login_path)%>

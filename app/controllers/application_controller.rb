@@ -1,23 +1,24 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :current_controller, :logged_in?, :require_user
+  helper_method :current_user, :current_controller, :logged_in?, :require_user,
+                :toggle_superuser, :current_superuser?
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
     rescue ActiveRecord::RecordNotFound
   end
 
-  def current_controller?(names)
-    names.include?(current_controller)
-  end
-
   def logged_in?
     !!current_user
   end
 
+  def toggle_superuser(user)
+    user.toggle(:superuser).save
+  end
+
   def require_user
     if !logged_in?
-      flash[:yellow] = "Please, log in first."      
+      flash[:yellow] = "Please, log in first."
       redirect_to login_path
     end
   end
@@ -28,6 +29,14 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def require_superuser
+    if !current_superuser
+      flash[:red] = "Need superuser to do that."
+      redirect_to root_path
+    end
+  end
+
 
 
 

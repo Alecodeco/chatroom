@@ -1,0 +1,30 @@
+<div class="ui three wide column">
+  <div class="ui fluid raised card">
+    <div class="content">
+      <div class="ui inverted fluid vertical menu">
+        <div class="ui left pointing dropdown link item">
+          <i class="dropdown icon"></i>
+          Status
+          <div class="menu">
+            <% @status_list.each do |status, btn_color| %>
+            <div class="item">
+            <%= form_tag change_status_path, method: :get, remote: true do %>
+              <%= hidden_field_tag :status, status %>
+              <%= button_tag status, type: :submit, class:"ui fluid #{btn_color} button" %>
+            <% end %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <%= link_to "History", history_path, class:"item" %>
+        <% if current_user.superuser %>
+        <div class="item">
+          <%= form_tag cleanup_path, method: :get, remote: true do %>
+          <%= button_tag "Clean log", type: :submit %>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

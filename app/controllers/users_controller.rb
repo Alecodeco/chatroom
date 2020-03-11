@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    set_normal_user(@user)
     if @user.save
       session[:user_id] = @user.id
       @user.update_attribute(:status, "Online")
@@ -47,13 +48,15 @@ class UsersController < ApplicationController
       current_user.update_attribute(:status, params[:status])
       format.js { render js: "$('#current-status-nav').load(location.href + ' #current-status-tag');" }
     end
-
   end
-
 
   private
   def user_params
      params.require(:user).permit(:username, :password, :password_confirmation, :description, :status)
+  end  
+
+  def set_normal_user(user)
+    user.superuser = false
   end
 
   def require_same_user

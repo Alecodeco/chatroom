@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   post 'message', to: 'messages#create'
   get 'history', to: 'messages#index'
+  get 'cleanup', to: 'messages#cleanup'
 
   mount ActionCable.server, at:"/cable"
 

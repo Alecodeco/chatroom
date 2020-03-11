@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_141455) do
+ActiveRecord::Schema.define(version: 2020_03_11_175642) do
 
   create_table "messages", force: :cascade do |t|
     t.text "body"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_141455) do
     t.string "password_digest"
     t.string "status"
     t.text "description"
+    t.boolean "superuser"
   end
 
 end
