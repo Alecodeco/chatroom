@@ -7,6 +7,9 @@ class MessagesController < ApplicationController
     message = current_user.messages.build(message_params)
     if message.save
       ActionCable.server.broadcast "chatroom_channel", text_message: message_render(message)
+    else
+      flash[:red] = "Message invalid. Too long or format unaccepted."
+      redirect_to root_path
     end
   end
 
@@ -15,10 +18,9 @@ class MessagesController < ApplicationController
   end
 
   def cleanup
-    flash[:teal] = "Cleaning done! All messages were deleted."
     respond_to do |format|
-      Message.all.each { |message| message.destroy }
       format.js {
+        Message.all.each { |message| message.destroy }
         render js: "$('#message-container').load(location.href + ' #each-message');"
       }
     end
@@ -32,6 +34,5 @@ class MessagesController < ApplicationController
   def message_render(message)
     render(partial:'message', locals:{message: message})
   end
-
 
 end

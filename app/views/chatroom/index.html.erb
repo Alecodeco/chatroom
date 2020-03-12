@@ -3,17 +3,17 @@
   Chatroom
 </h2>
 
-<div class="ui stackable centered grid">
+<div class="ui centered grid">
 
   <%= render 'chatroom/left_button_menu' %>
 
   <div class="ui ten wide column ">
     <div class="ui fluid raised card">
-      <div class="ui large feed" id="message-container">
+      <div id="message-container">
         <%= render @messages %>
       </div>
       <div class="extra content">
-        <%= form_with model: @message, method:"create", url:message_path, id:"chat_form" do |f| %>
+        <%= form_with model:@message, method:"create", url:message_path, id:"chat_form" do |f| %>
         <div class="ui small fluid action input">
           <%= f.text_field :body, autofocus: true, autocomplete: false,
                             placeholder:"Enter message here...", id:"chat_textfield" %>

@@ -2,13 +2,19 @@
   <i class="circular history icon"></i>
   History
 </h2>
-
-<div class="ui container">
-  <% @messages.each do |msg| %>
-  <div class="row">
-    <%= "#{msg.created_at.strftime("%d-%b-%Y %k:%M")} - " %>
-    <%= "#{msg.user.username.upcase}" %>
-    <%= " : #{msg.body}" %>
+<br>
+<div class="ui container ">
+  <% if @messages.empty? %>
+  <div class="ui center aligned grid">
+    <p>No messages to list.</p>
   </div>
+  <% else %>
+    <% @messages.each do |msg| %>
+    <div class="row">
+      <%= "#{msg.created_at.strftime("%d-%b-%Y %k:%M")} - " %>
+      <%= "#{msg.user.username}" %>
+      <%= " : #{msg.body}" %>
+    </div>
+    <% end %>
   <% end %>
 </div>
