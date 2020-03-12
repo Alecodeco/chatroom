@@ -14,6 +14,16 @@ class MessagesController < ApplicationController
     @messages = Message.custom_history
   end
 
+  def cleanup
+    flash[:teal] = "Cleaning done! All messages were deleted."
+    respond_to do |format|
+      Message.all.each { |message| message.destroy }
+      format.js {
+        render js: "$('#message-container').load(location.href + ' #each-message');"
+      }
+    end
+  end
+
   private
   def message_params
     params.require(:message).permit(:body)
@@ -21,13 +31,6 @@ class MessagesController < ApplicationController
 
   def message_render(message)
     render(partial:'message', locals:{message: message})
-  end
-
-  def cleanup
-    @messages = Messages.all
-    @messages.destroy
-    flash[:warning] = "Cleaning done! All messages were deleted."
-    redirect_to root_path
   end
 
 

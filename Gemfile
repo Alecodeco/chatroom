@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
+#
 # My gems
+#
 gem 'semantic-ui-sass'
 gem 'hirb'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
@@ -14,6 +16,7 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'aws-sdk', '~> 3'
 gem 'aws-sdk-s3'
 gem 'markdown-rails'
+#
 #
 #
 # Use sqlite3 as the database for Active Record

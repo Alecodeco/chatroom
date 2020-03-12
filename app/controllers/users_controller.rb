@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       @user.update_attribute(:status, "Online")
-      flash[:success] = "Account successfully created. Welcome '#{@user.username}'!"
+      flash[:green] = "Account successfully created. Welcome '#{@user.username}'!"
       redirect_to root_path
     else
       render 'new'
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   private
   def user_params
      params.require(:user).permit(:username, :password, :password_confirmation, :description, :status)
-  end  
+  end
 
   def set_normal_user(user)
     user.superuser = false
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
 
   def require_same_user
     if logged_in? && current_user != @user
-      flash[:danger] = "You can only edit your own account"
+      flash[:red] = "You can only edit your own account"
       redirect_to root_path
     end
   end

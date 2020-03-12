@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   helper_method :current_user, :current_controller, :logged_in?, :require_user,
-                :toggle_superuser, :current_superuser?
+                :toggle_superuser, :current_superuser?, :require_superuser
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -31,8 +31,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_superuser
-    if !current_superuser
-      flash[:red] = "Need superuser to do that."
+    if !current_user.superuser
+      flash[:red] = "Need Superuser to do that."
       redirect_to root_path
     end
   end
