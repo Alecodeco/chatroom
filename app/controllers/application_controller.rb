@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-
+  include MarkdownHelper
+  
   helper_method :current_user, :current_controller, :logged_in?, :require_user,
                 :toggle_superuser, :current_superuser?, :require_superuser
 

@@ -4,10 +4,7 @@
   </div>
   <div class="content">
     <div class="summary">
-      <p><%= message.user.username %></p>
-    </div>
-    <div class="extra text">
-      <%= message.body %>
-    </div>
+      <%= markdown(message.user.username+" : "+message.body) %>
+    </div>    
   </div>
 </div>
