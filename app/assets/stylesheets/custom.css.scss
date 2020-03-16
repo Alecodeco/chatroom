@@ -2,6 +2,9 @@
 
 body {
    font-family: 'Ubuntu', sans-serif;
+   min-width: 850px;        /* Suppose you want minimum width of 1000px */
+   width: auto !important;  /* Firefox will set width as auto */
+   width:850px;            /* As IE6 ignores !important it will set width as 1000px; */
 }
 #message-container {
   max-height: 250px;
@@ -14,5 +17,5 @@ body {
   margin-left: 5px;
 }
 #nav-countdown-wrapper {
-  position: relative;  
+  position: relative;
 }
