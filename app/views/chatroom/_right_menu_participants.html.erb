@@ -3,24 +3,28 @@
     <div class="content">
       <div class="ui small feed">
         <h4 class="ui header">Participants:</h4>
+        <div class="ui divider"></div>
+
         <% @users.each do |user| %>
-        <% if user.status != "Offline" %>
-        <div class="event">
-          <div class="content">
-            <div class="summary">
-              <%= link_to "#{user.username}", user_path(user.id) if user != current_user %>
+          <% unless user.status == "Offline" %>
+          <div class="event">
+            <div class="content">
+              <div class="summary">
+                <%= link_to "#{user.username}", user_path(user.id) if user != current_user %>
+              </div>
             </div>
           </div>
-        </div>
+          <% end %>
         <% end %>
-        <% end %>
-        <div class="event">
-          <div class="content">
-            <div class="summary">
-              <%= link_to "( You )", user_path(current_user.id) %>
+
+          <div class="event">
+            <div class="content">
+              <div class="summary">
+                <%= link_to "( You )", user_path(current_user.id) %>
+              </div>
             </div>
           </div>
-        </div>
+
       </div>
     </div>
   </div>
