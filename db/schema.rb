@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_175642) do
+ActiveRecord::Schema.define(version: 2020_03_17_123359) do
 
   create_table "messages", force: :cascade do |t|
     t.text "body"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_175642) do
     t.string "status"
     t.text "description"
     t.boolean "superuser"
+    t.boolean "has_dark_active"
   end
 
 end

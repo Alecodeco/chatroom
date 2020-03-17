@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
   get 'change_status', to: 'users#change_status'
+  get 'toggle_dark_mode', to: 'users#toggle_dark_mode'
   resources :users, except: [:new]
 
   post 'message', to: 'messages#create'

@@ -1,4 +1,4 @@
-<div class="ui small borderless orange menu">
+<div class="ui small borderless orange <%="#{has_dark_active?}"%> menu">
   <div class="ui container">
     <div class="left menu">
       <%= link_to "Chatroom", root_path, class:"item #{'active' if current_page?(root_path)}" %>
@@ -43,6 +43,13 @@
     </div>
   </div>
   <div class="vertically fitted item" id="dark-theme-toggler">
-    <i class="ui sun outline big link icon"></i>
+    <% if logged_in? %>
+    <% icon_mode = "moon" if current_user.has_dark_active %>
+    <% icon_mode = "sun"  if !current_user.has_dark_active %>
+    <i class="ui <%="#{icon_mode}"%> outline big link icon"></i>
+    <%= form_tag toggle_dark_mode_path, method: :get, remote: true do %>
+      <%= submit_tag nil, type: :submit%>
+    <% end %>
+    <% end %>
   </div>
 </div>

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include MarkdownHelper
 
   helper_method :current_user, :current_controller, :logged_in?, :require_user,
-                :toggle_superuser, :current_superuser?, :require_superuser
+                :toggle_superuser, :current_superuser?, :require_superuser, :has_dark_active?
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -13,14 +13,24 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def has_dark_active?
+    if logged_in? && current_user.has_dark_active
+      "inverted"
+    end
+  end
+
+  def toggle_dark_mode
+    current_user.toggle(:has_dark_active).save
+    #flash[:green] = "In brightest day, in blackest night..."
+  end
+
   def toggle_superuser(user)
-    user.toggle(:superuser).save
+    user.toggle(:superuser).save!
   end
 
   def require_user
     if !logged_in?
       flash[:yellow] = "Please, log in first."
-      redirect_to login_path
     end
   end
 
@@ -38,7 +48,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  
+
 
 
 
