@@ -16,12 +16,9 @@ class ApplicationController < ActionController::Base
   def has_dark_active?
     if logged_in? && current_user.has_dark_active
       "inverted"
+    else
+      "orange"
     end
-  end
-
-  def toggle_dark_mode
-    current_user.toggle(:has_dark_active).save
-    #flash[:green] = "In brightest day, in blackest night..."
   end
 
   def toggle_superuser(user)

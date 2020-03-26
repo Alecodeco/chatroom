@@ -3,11 +3,11 @@
   Chatroom
 </h2>
 
-<div class="ui centered grid">
+<div class="ui centered <%="#{has_dark_active?}"%> grid">
 
   <%= render 'chatroom/left_button_menu' %>
 
-  <div class="ui nine wide column ">
+  <div class="ui nine wide column">
     <div class="ui fluid raised card">
       <div id="message-container">
         <%= render @messages %>

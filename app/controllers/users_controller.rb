@@ -50,6 +50,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def toggle_dark_mode
+    respond_to do |format|
+      current_user.toggle!(:has_dark_active)
+      format.js { render js: "$('#main-nav-wrapper').load(location.href + ' #main-nav');
+                              $('#left-menu-wrapper').load(location.href + ' #left-menu');
+                              $('#').load(location.href + ' #');
+                              $('#').load(location.href + ' #');" }
+    end
+  end
+
   private
   def user_params
      params.require(:user).permit(:username, :password, :password_confirmation, :description, :status)

@@ -1,18 +1,17 @@
 <div class="ui three wide column">
-  <div class="ui raised card">
-    <div class="content">
+  <span id="left-menu-wrapper">
+    <div class="ui fluid vertical <%="inverted" if current_user.has_dark_active?%> menu" id="left-menu">
 
-      <div class="ui fluid vertical menu">
         <div class="ui compact dropdown item">
           <span class="text">Status</span>
           <i class="dropdown icon"></i>
           <div class="menu">
             <% @status_list.each do |status, btn_color| %>
             <div class="item">
-            <%= form_tag change_status_path, method: :get, remote: true do %>
+              <%= form_tag change_status_path, method: :get, remote: true do %>
               <%= hidden_field_tag :status, status %>
               <%= button_tag status, type: :submit, class:"ui fluid tiny #{btn_color} button" %>
-            <% end %>
+              <% end %>
             </div>
             <% end %>
           </div>
@@ -35,6 +34,5 @@
         <% end %>
 
       </div>
-    </div>
-  </div>
+    </span>
 </div>
