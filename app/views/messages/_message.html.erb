@@ -1,17 +1,24 @@
 <span class="ui divider"></span>
-<div class="ui comments">
-  <div class="comment" id="chat-message-wrapper">
-    <a class="avatar">
-      
-    </a>
-    <div class="content">
-      <a class="author"><%= message.user.username + " : "%></a>
-      <div class="metadata">
-        <span class="date"><%="(#{message.created_at.strftime("%k:%M")})" %></span>
+<div class="comment" id="chat-message-wrapper">
+  <div class="ui twelve column grid">
+    <div class="row content">
+
+      <div class="column">
+        <span class="date"><%="(#{message.created_at.strftime("%k:%M")})"%></span>
       </div>
-      <div class="text" id="each_message">
-        <%= markdown(message.body) %>
+
+      <div class="column">
+        <a class="avatar">
+        </a>
+        <a class="author" id="chat-author"><%= message.user.username%></a>
       </div>
+
+      <div class="six wide column">
+        <span class="text" id="each_message">
+          <%= markdown(message.body) %>
+        </span>
+      </div>
+
     </div>
   </div>
 </div>

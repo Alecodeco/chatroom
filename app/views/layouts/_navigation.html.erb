@@ -1,15 +1,21 @@
 <div id="main-nav-wrapper">
   <div class="ui small borderless <%="#{has_dark_active?}"%> menu" id="main-nav">
     <div class="ui container">
+      <%= link_to "About", about_path, class:"item #{'active' if current_page?(about_path)}" %>
+      <% if logged_in? %>
       <div class="left menu">
         <%= link_to "Chatroom", root_path, class:"item #{'active' if current_page?(root_path)}" %>
-        <%= link_to "About", about_path, class:"item #{'active' if current_page?(about_path)}" %>
+        <div class="vertically fitted item">
+          <% label_color = "" %>
+          <% label_color = "green" if current_user.status == "Online" %>
+          <% label_color = "red" if current_user.status == "Busy" %>
+          <% label_color = "yellow" if current_user.status == "Away" %>
+          <span class="ui large <%="#{label_color}"%> label" id="current-status-tag">
+            <%= "#{current_user.status}" %>
+          </span>
+        </div>
       </div>
-      <!-- -->
-
-      <!-- -->
-      <div class="right menu">
-        <% if logged_in? %>
+      <div class="center menu"> # FIXME: !!!! not centered
         <div class="ui dropdown item">
           <i class="user orange icon"></i>
           <strong><%= "#{current_user.username}" %></strong>
@@ -23,15 +29,8 @@
             </div>
           </div>
         </div>
-        <div class="vertically fitted item">
-          <% label_color = "" %>
-          <% label_color = "green" if current_user.status == "Online" %>
-          <% label_color = "red" if current_user.status == "Busy" %>
-          <% label_color = "yellow" if current_user.status == "Away" %>
-          <span class="ui large <%="#{label_color}"%> label" id="current-status-tag">
-            <%= "#{current_user.status}" %>
-          </span>
-        </div>
+      </div>
+      <div class="right menu">
         <% elsif !logged_in? and !current_page?(login_path)%>
         <div class="item">
           <%= link_to "Log in", login_path, class: "ui primary button" %>
@@ -43,6 +42,7 @@
         <% end %>
       </div>
     </div>
+
     <div class="vertically fitted item" id="dark-theme-toggler">
       <% if logged_in? %>
       <% icon_mode = "moon" if current_user.has_dark_active %>

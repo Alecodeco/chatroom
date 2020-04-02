@@ -7,6 +7,7 @@ body {
    width:850px;            /* As IE6 ignores !important it will set width as 1000px; */
 }
 #message-container {
+  min-height: 300px;
   max-height: 250px;
   overflow: auto;
 }
@@ -21,4 +22,7 @@ body {
 }
 #dark-theme-toggler {
   margin-left: -25px;
+}
+#charset-author {
+  margin: 5px 10px 5px 10px;
 }

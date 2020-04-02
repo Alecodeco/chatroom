@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def has_dark_active?
     if logged_in? && current_user.has_dark_active
       "inverted"
-    else
+    elsif logged_in? && !current_user.has_dark_active
       "orange"
     end
   end
@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
   def require_user
     if !logged_in?
       flash[:yellow] = "Please, log in first."
+      redirect_to login_path
     end
   end
 

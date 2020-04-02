@@ -1,6 +1,6 @@
 class ChatroomController < ApplicationController
 
-  before_action :require_user, except: [:welcome]
+  before_action :require_user
 
   def index
     @status_list = [["Online","green"], ["Busy","red"], ["Away","yellow"]]

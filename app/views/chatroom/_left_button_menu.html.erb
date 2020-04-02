@@ -1,5 +1,5 @@
 <div class="ui three wide column">
-  <span id="left-menu-wrapper">
+  <span class="ui floating card" id="left-menu-wrapper">
     <div class="ui fluid vertical <%="inverted" if current_user.has_dark_active?%> menu" id="left-menu">
 
         <div class="ui compact dropdown item">
@@ -12,8 +12,8 @@
               <%= hidden_field_tag :status, status %>
               <%= button_tag status, type: :submit, class:"ui fluid tiny #{btn_color} button" %>
               <% end %>
-            </div>
-            <% end %>
+          </div>
+          <% end %>
           </div>
         </div>
 
