@@ -3,7 +3,7 @@
   Chatroom
 </h2>
 
-<div class="ui centered <%="#{has_dark_active?}"%> grid">
+<div class="ui centered <%='inverted' if current_user.has_dark_active?%> grid">
 
   <%= render 'chatroom/left_button_menu' %>
 

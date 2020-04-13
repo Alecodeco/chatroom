@@ -13,14 +13,6 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  def has_dark_active?
-    if logged_in? && current_user.has_dark_active
-      "inverted"
-    elsif logged_in? && !current_user.has_dark_active
-      "orange"
-    end
-  end
-
   def toggle_superuser(user)
     user.toggle(:superuser).save!
   end
