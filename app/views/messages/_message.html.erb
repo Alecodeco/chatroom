@@ -1,7 +1,6 @@
-<span class="ui divider"></span>
 <div class="comment" id="chat-message-wrapper">
-  <div class="ui twelve column grid">
-    <div class="row content">
+  <div class="ui twelve column padded grid">
+    <div class="row content <%="black" if current_user.has_dark_active?%> ">
 
       <div class="column">
         <span class="date"><%="(#{message.created_at.strftime("%k:%M")})"%></span>
@@ -13,7 +12,7 @@
         <a class="author" id="chat-author"><%= message.user.username%></a>
       </div>
 
-      <div class="six wide column">
+      <div class="four wide column">
         <span class="text" id="each_message">
           <%= markdown(message.body) %>
         </span>

@@ -2,7 +2,7 @@
   <div class="ui small <%='inverted' if current_user.has_dark_active?%> fluid four item menu" id="main-nav">
 
       <div class="vertically fitted item left menu">
-        <%= link_to "About", about_path, class:"red item #{'active' if current_page?(about_path)}" %>
+        <%= link_to "About", about_path, class:"orange item #{'active' if current_page?(about_path)}" %>
 
         <% if logged_in? %>
         <%= link_to "Chatroom", root_path, class:"orange item #{'active' if current_page?(root_path)}" %>
@@ -30,13 +30,9 @@
             <%= "#{current_user.status}" %>
           </div>
         </div>
-
       </div>
 
-
-
-
-      <div class=" right menu">
+      <div class="right menu">
         <% elsif !logged_in? and !current_page?(login_path)%>
         <div class="item">
           <%= link_to "Log in", login_path, class: "ui primary button" %>

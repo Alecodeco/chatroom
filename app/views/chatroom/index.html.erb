@@ -1,4 +1,4 @@
-<h2 class="ui center aligned medium icon header">
+<h2 id="chatroom-icon-header" class="ui center aligned medium icon <%="inverted" if current_user.has_dark_active?%> header">
   <i class="circular orange comments outline icon"></i>
   Chatroom
 </h2>
@@ -9,10 +9,10 @@
 
   <div class="ui nine wide column">
     <div class="ui fluid raised card">
-      <div id="message-container">
+      <div id="message-container" style=<%="background-color:black" if current_user.has_dark_active?%> >
         <%= render @messages %>
       </div>
-      <div class="extra content">
+      <div class="extra content" style=<%="background-color:black" if current_user.has_dark_active?%>>
         <%= form_with model:@message, method:"create", url:message_path, id:"chat_form" do |f| %>
         <div class="ui small fluid action input">
           <%= f.text_field :body, autofocus: true, autocomplete: false,

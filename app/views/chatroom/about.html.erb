@@ -1,16 +1,16 @@
-<h2 class="ui center aligned icon header">
+<h2 class="ui center aligned <%="inverted" if current_user.has_dark_active?%> icon header">
   <i class="circular <%= "orange" if logged_in? %> coffee icon"></i>
   About this webapp...
 </h2>
 
 <div class=" ui container center aligned welcome-container">
-  <div class="welcome-text">
+  <div class="welcome-text" style=<%="color:white" if current_user.has_dark_active?%> >
     <p>... here you can chat in live with the other people that registers here.</p>
     <p>The initial intention was to practice and leave some kind of a comunitary chat sandbox.</p>
     <p><strong>Remember to never reveal important data from yourself or others to
     unknown people.</strong></p>
     <p>Also, there are <strong>NO</strong> administrators or moderators of any kind.</p>
-    <p>We will never ask for any passwords, user information or whatsoever.</p>    
+    <p>We will never ask for any passwords, user information or whatsoever.</p>
     <p>Here's a link to the code in git, in case you want to see how was this made
       <a class="ui grey small label" href="https://github.com/Alecodeco/chatroom"
         id="github-button-link">
