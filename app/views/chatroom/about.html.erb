@@ -1,10 +1,10 @@
-<h2 class="ui center aligned <%="inverted" if current_user.has_dark_active?%> icon header">
+<h2 class="ui center aligned <%="inverted" if night_mode?%> icon header">
   <i class="circular <%= "orange" if logged_in? %> coffee icon"></i>
   About this webapp...
 </h2>
 
 <div class=" ui container center aligned welcome-container">
-  <div class="welcome-text" style=<%="color:white" if current_user.has_dark_active?%> >
+  <div class="welcome-text" style=<%="color:white" if night_mode?%> >
     <p>... here you can chat in live with the other people that registers here.</p>
     <p>The initial intention was to practice and leave some kind of a comunitary chat sandbox.</p>
     <p><strong>Remember to never reveal important data from yourself or others to

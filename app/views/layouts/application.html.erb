@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto|Ubuntu&display=swap" rel="stylesheet">
   </head>
 
-  <body style= <%="background:black;" if current_user.has_dark_active?%> >
+  <body style= <%="background:black;" if night_mode?%> >
     <%= render 'layouts/navigation' %>
     <br>
 

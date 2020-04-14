@@ -1,6 +1,6 @@
 <div class="comment" id="chat-message-wrapper">
   <div class="ui twelve column padded grid">
-    <div class="row content <%="black" if current_user.has_dark_active?%> ">
+    <div class="row content <%="black" if night_mode?%> ">
 
       <div class="column">
         <span class="date"><%="(#{message.created_at.strftime("%k:%M")})"%></span>

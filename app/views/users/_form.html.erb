@@ -1,23 +1,23 @@
 <div class="ui form">
   <%= form_for @user do |f| %>
     <div class="required field">
-      <%= f.label :username %>
+      <%= f.label :username, style:"color:#{'white' if night_mode?}" %>
       <%= f.text_field :username, placeholder:'Enter username', autofocus:"true" %>
     </div>
+    <div class="field">
+      <%= f.label :description, style:"color:#{'white' if night_mode?}"  %>
+      <%= f.text_area :description, placeholder: "Tell us about yourself !" %>
+    </div>
     <div class="required field">
-      <%= f.label :password %>
-      <%= f.password_field :password, placeholder:"Enter password"%>
+      <%= f.label :password, style:"color:#{'white' if night_mode?}"  %>
+      <%= f.password_field :password, placeholder:"Enter password to save changes"%>
     </div>
     <% if @user.new_record? %>
     <div class="required field">
-      <%= f.label :password_confirmation %>
+      <%= f.label :password_confirmation, style:"color:#{'white' if night_mode?}"  %>
       <%= f.password_field :password_confirmation, placeholder:"Re-enter password" %>
     </div>
     <% else %>
-    <div class="field">
-      <%= f.label :description %>
-      <%= f.text_area :description, placeholder: "Tell us about yourself !" %>
-    </div>
     <% end %>
     <br>
     <%= f.submit(@user.new_record? ? "Signup" : "Save changes", class:"ui orange button") %>

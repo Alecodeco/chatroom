@@ -1,30 +1,32 @@
 <% userStatusIcon = "orange" if @user.status == "Online" %>
 <% userStatusIcon = "times" if @user.status == "Busy" %>
 <% userStatusIcon = "outline" if @user.status == "Away" %>
-<h2 class="ui center aligned tiny icon header">
+<h2 class="ui center aligned tiny icon header <%='inverted' if night_mode?%>">
   <i class="user <%= userStatusIcon %> icon" ></i>
   Currently: <%= @user.status %>
 </h2>
 
 <div class="ui container" align="center">
-  <div class="ui card">
-    <div class="image">
-      <img src="">
-    </div>
-    <div class="content">
-      <a class="header"><%= @user.username %></a>
-      <div class="meta">
-        <span class="date"></span>
+  <div class="ui raised card">
+    <div class="ui segment <%='inverted' if night_mode?%>">
+      <div class="image">
+        <img src="">
       </div>
-      <div class="description">
-        <%= @user.description %>
+      <div class="ui padded segment <%='inverted' if night_mode?%>">
+        <a class="ui header <%='inverted' if night_mode?%>"><%= @user.username %></a>
+        <div class="meta">
+          <span class="date"></span>
+        </div>
+        <div class="description">
+          <%= @user.description %>
+        </div>
       </div>
-    </div>
-    <div class="extra content">
-      <a>
-        <i class="calendar alternate outline icon"></i>
-        <small>Member since: <%= @user.created_at.strftime("%B %Y") %></small>
-      </a>
+      <div class="extra content">
+        <a>
+          <i class="calendar alternate outline icon"></i>
+          <small>Member since: <%= @user.created_at.strftime("%B %Y") %></small>
+        </a>
+      </div>
     </div>
   </div>
   <% if current_user == @user %>
