@@ -44,13 +44,16 @@
         <% end %>
         <% icon_mode = "moon" if night_mode? %>
         <% icon_mode = "sun"  if !night_mode? %>
+        <% if logged_in? %>
         <div class="vertically fitted item" id="dark-theme-toggler">
           <i class="ui <%="#{icon_mode}"%> outline big icon" id="daytime-icon"></i>
           <%= form_tag toggle_dark_mode_path, method: :get, remote: true do %>
           <%= submit_tag "Change", type: :submit, class:"ui tiny inverted orange fluid button"%>
           <% end %>
-        </div>        
+        </div>
+        <% end %>
       </div>
+
 
   </div>
 </div>
