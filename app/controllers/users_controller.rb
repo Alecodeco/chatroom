@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def change_status
     respond_to do |format|
       current_user.update_attribute(:status, params[:status])
-      format.js { render js: "$('#current-status-nav').load(location.href + ' #current-status-tag');" }
+      format.js { render inline: "$('#current-status-nav').load(location.href + ' #current-status-tag');" }
     end
   end
 

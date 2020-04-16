@@ -1,38 +1,38 @@
 <div class="ui three wide column">
-  <span class="ui floating card" id="left-menu-wrapper">
-    <div class="ui fluid vertical <%="inverted" if night_mode?%> menu" id="left-menu">
+  <div class="ui floating card" >
+    <div class="ui fluid vertical <%="inverted" if night_mode?%> menu">
 
-        <div class="ui compact dropdown item">
-          <span class="text">Status</span>
-          <i class="dropdown icon"></i>
-          <div class="menu">
-            <% @status_list.each do |status, btn_color| %>
-            <div class="item">
-              <%= form_tag change_status_path, method: :get, remote: true do %>
-              <%= hidden_field_tag :status, status %>
-              <%= button_tag status, type: :submit, class:"ui fluid tiny #{btn_color} button" %>
-              <% end %>
+      <div class="ui compact dropdown item">
+        <i class="dropdown icon"></i>
+        Status
+        <div class="menu">
+          <% @status_list.each do |status, btn_color| %>
+          <div class="item">
+            <%= form_tag change_status_path, method: :get, remote: true do %>
+            <%= hidden_field_tag :status, status %>
+            <%= button_tag status, type: :submit, class:"ui fluid small #{btn_color} button" %>
+            <% end %>
           </div>
           <% end %>
-          </div>
         </div>
-
-        <%= link_to "History", history_path, class:"item" %>
-
-        <% if current_user.superuser %>
-        <div class="ui inline compact dropdown item">
-          Sudo
-          <i class="dropdown right floated icon"></i>
-          <div class="menu">
-            <div class="item">
-              <%= form_tag cleanup_path, method: :get, remote: true do %>
-              <%= button_tag "Clean log", type: :submit, class: "ui fluid tiny red button" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <% end %>
-
       </div>
-    </span>
+
+      <%= link_to "History", history_path, class:"item" %>
+
+      <% if current_user.superuser %>
+      <div class="ui inline compact dropdown item">
+        Sudo
+        <i class="dropdown right floated icon"></i>
+        <div class="menu">
+          <div class="item">
+            <%= form_tag cleanup_path, method: :get, remote: true do %>
+            <%= button_tag "Clean log", type: :submit, class: "ui fluid tiny red button" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
 </div>

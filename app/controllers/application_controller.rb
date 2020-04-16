@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   include MarkdownHelper
 
   helper_method :current_user, :current_controller, :logged_in?, :require_user,
-                :toggle_superuser, :current_superuser?, :require_superuser, :night_mode?
+                :toggle_superuser, :current_superuser?, :require_superuser, :night_mode?,
+                :same_status?
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -15,6 +16,10 @@ class ApplicationController < ActionController::Base
 
   def night_mode?
     !!logged_in? && current_user.has_dark_active?
+  end
+
+  def same_status?(status)
+    !!logged_in? && current_user.status.to_s == status
   end
 
   def toggle_superuser(user)
