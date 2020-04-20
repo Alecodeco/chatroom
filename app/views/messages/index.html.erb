@@ -1,16 +1,16 @@
-<h2 class="ui center aligned small icon header">
-  <i class="circular history icon"></i>
+<h2 class="ui center aligned small icon header <%='inverted' if night_mode?%>">
+  <i class="circular history <%='orange' if night_mode?%> icon"></i>
   History
 </h2>
 <br>
 <div class="ui container ">
   <% if @messages.empty? %>
-  <div class="ui center aligned grid">
+  <div class="ui segment">
     <p>No messages to list.</p>
   </div>
   <% else %>
     <% @messages.each do |msg| %>
-    <div class="row">
+    <div class="row" style=<%="color:white;" if night_mode?%> >
       <%= "#{msg.created_at.strftime("%d-%b-%Y %k:%M")} - " %>
       <%= "#{msg.user.username}" %>
       <%= " : #{msg.body}" %>
