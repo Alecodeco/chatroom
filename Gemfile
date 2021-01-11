@@ -15,7 +15,7 @@ gem 'sassc', '~> 2.2', '>= 2.2.1'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'aws-sdk', '~> 3'
 gem 'aws-sdk-s3'
-gem 'redcarpet', '~> 3.4'
+gem 'redcarpet', '~> 3.5'
 gem 'rouge', '~> 3.3'
 #
 #
