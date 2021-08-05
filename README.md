@@ -1,5 +1,7 @@
 # README
 
+Try it out! =  https://message-me-now.herokuapp.com/login
+
 Yet another simple web chat made to try out ActionCable.
 
 * Ruby 2.6.5
